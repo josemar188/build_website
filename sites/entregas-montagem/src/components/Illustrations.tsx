@@ -1,6 +1,8 @@
 // Ilustrações originais do site (sem fotos de bancos de imagens).
 // Usam as cores do tema, por isso mudam se a paleta mudar em globals.css.
 
+import { VanStatic } from "./Van";
+
 const wood = "#c99a6b";
 const woodDark = "#a97b4f";
 const card = "#d9ad74";
@@ -82,26 +84,12 @@ export function DeliveryIllustration({ className, label }: Props) {
       <path d="M0 262h480" stroke={edge} strokeWidth="2" />
       <ellipse cx="330" cy="268" rx="150" ry="8" fill="var(--color-forest)" opacity="0.1" />
 
-      {/* carrinha: caixa de carga */}
-      <rect x="200" y="86" width="196" height="150" rx="12" fill="var(--color-forest)" />
-      <rect x="200" y="182" width="196" height="12" fill="var(--color-mint)" opacity="0.9" />
-      <rect x="222" y="112" width="40" height="40" rx="10" fill="var(--color-green)" />
-      <path d="M242 120l13 7v14l-13 7-13-7v-14z" fill="none" stroke="var(--color-mint)" strokeWidth="3" strokeLinejoin="round" />
-      {/* cabine */}
-      <path d="M396 120h44c8 0 14 4 18 11l18 34c2 4 3 8 3 12v47c0 6-5 12-12 12h-71z" fill="var(--color-forest)" />
-      <path d="M404 132h32c4 0 7 2 9 6l14 27h-55z" fill="var(--color-mint)" opacity="0.85" />
-      <rect x="462" y="206" width="18" height="10" rx="3" fill="#f6c14b" />
-      <rect x="404" y="182" width="14" height="4" rx="2" fill="var(--color-mint)" />
-      {/* porta traseira aberta */}
-      <path d="M200 92l-22 10v128l22 4z" fill="#14503f" />
-      <rect x="184" y="150" width="4" height="22" rx="2" fill="var(--color-mint)" />
-      {/* rodas */}
-      {[256, 418].map((x) => (
-        <g key={x}>
-          <circle cx={x} cy="238" r="26" fill="var(--color-ink)" />
-          <circle cx={x} cy="238" r="11" fill={steel} />
-        </g>
-      ))}
+      {/* carrinha (cabine vermelha, caixa cinzenta) com a porta traseira aberta */}
+      <path d="M188 106l-20 9v112l20 4z" fill="#bdbdbd" />
+      <rect x="173" y="160" width="4" height="20" rx="2" fill="#8f8f8f" />
+      <g transform="translate(186 104) scale(1.28)">
+        <VanStatic />
+      </g>
 
       {/* carrinho de mão com caixas */}
       <path d="M58 118v132h58" fill="none" stroke="var(--color-ink-soft)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
@@ -137,17 +125,9 @@ export function OrderIllustration({ className, label }: Props) {
       <ellipse cx="250" cy="318" rx="210" ry="12" fill="var(--color-forest)" opacity="0.08" />
 
       {/* carrinha atrás */}
-      <rect x="170" y="96" width="210" height="170" rx="16" fill={white} stroke={edge} strokeWidth="3" />
-      <path d="M380 128h40c9 0 16 5 20 12l22 40c2 4 3 9 3 13v61c0 7-6 13-13 13h-72z" fill={white} stroke={edge} strokeWidth="3" />
-      <path d="M390 140h28c5 0 9 3 11 7l18 33h-57z" fill="var(--color-mint)" />
-      <rect x="170" y="210" width="295" height="14" fill="var(--color-green)" />
-      <rect x="452" y="232" width="16" height="10" rx="3" fill="#f6c14b" />
-      {[230, 420].map((x) => (
-        <g key={x}>
-          <circle cx={x} cy="276" r="28" fill="var(--color-ink)" />
-          <circle cx={x} cy="276" r="12" fill={steel} />
-        </g>
-      ))}
+      <g transform="translate(196 152) scale(1.22)">
+        <VanStatic />
+      </g>
 
       {/* telemóvel */}
       <rect x="58" y="20" width="150" height="286" rx="24" fill="var(--color-forest)" />

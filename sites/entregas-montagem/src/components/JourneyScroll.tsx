@@ -15,6 +15,7 @@ import {
 } from "motion/react";
 import { useRef, useState } from "react";
 import { journey } from "@/content";
+import { VAN_WHEELS, VanBody } from "./Van";
 
 // ---------- linha temporal (0 → 1 ao longo da secção) ----------
 const T = {
@@ -118,21 +119,17 @@ function Skyline() {
 function Van({ x, wheel, bob }: { x: MotionValue<number>; wheel: MotionValue<number>; bob: MotionValue<number> }) {
   return (
     <motion.g style={{ x, y: 350 }}>
+      <ellipse cx="112" cy="121" rx="114" ry="6" fill="#000" opacity="0.12" />
       <motion.g style={{ y: bob }}>
-        <rect x="0" y="0" width="150" height="96" rx="10" fill="var(--color-forest)" />
-        <rect x="0" y="62" width="150" height="10" fill="var(--color-mint)" opacity="0.9" />
-        <rect x="18" y="18" width="30" height="30" rx="8" fill="var(--color-teal)" />
-        <path d="M33 24l10 5v11l-10 5-10-5V29z" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinejoin="round" />
-        <path d="M150 22h36c6 0 11 3 14 8l14 26c1 3 2 6 2 9v31H150z" fill="var(--color-forest)" />
-        <path d="M156 30h26c3 0 6 2 7 4l11 22h-44z" fill="var(--color-mint)" opacity="0.85" />
-        <rect x="206" y="80" width="12" height="8" rx="2" fill="#f6c14b" />
+        <VanBody />
       </motion.g>
-      {[44, 176].map((cx) => (
+      {VAN_WHEELS.map((cx) => (
         <g key={cx} transform={`translate(${cx} 100)`}>
-          <circle r="20" fill="var(--color-ink)" />
+          <circle r="20" fill="#1f1f1f" />
           <motion.g style={{ rotate: wheel, ...sx }}>
-            <circle r="9" fill="#9aa7a1" />
-            <rect x="-2" y="-9" width="4" height="18" fill="var(--color-ink)" opacity="0.5" />
+            <circle r="10" fill="#d6d6d6" />
+            <rect x="-1.5" y="-10" width="3" height="20" fill="#9a9a9a" />
+            <circle r="4" fill="#a9a9a9" />
           </motion.g>
         </g>
       ))}
