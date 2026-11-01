@@ -73,12 +73,12 @@ function House() {
       ))}
       <path d="M2360 252l210-90 210 90z" fill="#c2410c" />
       <rect x="2610" y="290" width="70" height="56" fill="#cfe9e4" stroke="#fff" strokeWidth="5" />
-      <rect x="2600" y="290" width="10" height="56" fill="var(--color-green)" />
-      <rect x="2680" y="290" width="10" height="56" fill="var(--color-green)" />
+      <rect x="2600" y="290" width="10" height="56" fill="var(--color-leaf)" />
+      <rect x="2680" y="290" width="10" height="56" fill="var(--color-leaf)" />
       <rect x={HOUSE_DOOR - 32} y="306" width="64" height="94" rx="32" ry="0" fill="var(--color-forest)" />
       <circle cx={HOUSE_DOOR + 18} cy="356" r="4" fill="#f6c14b" />
       <rect x="2420" y="370" width="26" height="30" rx="4" fill="var(--color-orange)" />
-      <circle cx="2433" cy="356" r="18" fill="var(--color-green)" />
+      <circle cx="2433" cy="356" r="18" fill="var(--color-leaf)" />
       <rect x="2560" y="200" width="40" height="34" fill="#cfe9e4" stroke="#fff" strokeWidth="4" />
     </g>
   );
@@ -88,8 +88,8 @@ function Tree({ x }: { x: number }) {
   return (
     <g>
       <rect x={x - 5} y={GROUND - 50} width="10" height="50" fill="#7b5a3c" />
-      <circle cx={x} cy={GROUND - 70} r="30" fill="var(--color-green)" />
-      <circle cx={x - 18} cy={GROUND - 55} r="20" fill="#0e8f66" />
+      <circle cx={x} cy={GROUND - 70} r="30" fill="var(--color-leaf)" />
+      <circle cx={x - 18} cy={GROUND - 55} r="20" fill="#4a9c85" />
     </g>
   );
 }
@@ -98,9 +98,9 @@ function Tree({ x }: { x: number }) {
 function Skyline() {
   return (
     <g>
-      <path d="M0 330 Q200 250 420 310 T900 300 T1400 290 T1900 320 V420 H0z" fill="#bfe8d6" />
+      <path d="M0 330 Q200 250 420 310 T900 300 T1400 290 T1900 320 V420 H0z" fill="#e6e8e7" />
       {[60, 140, 520, 600, 1500, 1590, 1680].map((x, i) => (
-        <rect key={x} x={x} y={260 - (i % 3) * 30} width="60" height={160 + (i % 3) * 30} fill="#a7dcc6" />
+        <rect key={x} x={x} y={260 - (i % 3) * 30} width="60" height={160 + (i % 3) * 30} fill="#d9dcdb" />
       ))}
       {/* ponte suspensa */}
       <g stroke="#b5452f" fill="none">
@@ -121,8 +121,8 @@ function Van({ x, wheel, bob }: { x: MotionValue<number>; wheel: MotionValue<num
       <motion.g style={{ y: bob }}>
         <rect x="0" y="0" width="150" height="96" rx="10" fill="var(--color-forest)" />
         <rect x="0" y="62" width="150" height="10" fill="var(--color-mint)" opacity="0.9" />
-        <rect x="18" y="18" width="30" height="30" rx="8" fill="var(--color-green)" />
-        <path d="M33 24l10 5v11l-10 5-10-5V29z" fill="none" stroke="var(--color-mint)" strokeWidth="2.5" strokeLinejoin="round" />
+        <rect x="18" y="18" width="30" height="30" rx="8" fill="var(--color-teal)" />
+        <path d="M33 24l10 5v11l-10 5-10-5V29z" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinejoin="round" />
         <path d="M150 22h36c6 0 11 3 14 8l14 26c1 3 2 6 2 9v31H150z" fill="var(--color-forest)" />
         <path d="M156 30h26c3 0 6 2 7 4l11 22h-44z" fill="var(--color-mint)" opacity="0.85" />
         <rect x="206" y="80" width="12" height="8" rx="2" fill="#f6c14b" />
@@ -231,7 +231,7 @@ function Assembly({ p }: { p: MotionValue<number> }) {
 
       {/* visto final */}
       <motion.g style={{ opacity: check, scale: check, ...sx }}>
-        <circle cx="640" cy="180" r="34" fill="var(--color-green)" />
+        <circle cx="640" cy="180" r="34" fill="var(--color-leaf)" />
         <path d="M624 181l11 11 22-24" stroke="#fff" strokeWidth="7" fill="none" strokeLinecap="round" strokeLinejoin="round" />
       </motion.g>
       </g>
@@ -252,12 +252,12 @@ function Scene({ p }: { p: MotionValue<number> }) {
     <svg viewBox="0 0 1000 560" className="block h-full w-full" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#e9faf2" />
+          <stop offset="0" stopColor="#f1f2f2" />
           <stop offset="1" stopColor="var(--color-paper)" />
         </linearGradient>
       </defs>
       <rect width="1000" height="560" fill="url(#ceu)" />
-      <circle cx="840" cy="110" r="46" fill="#ffe3b8" />
+      <circle cx="840" cy="110" r="46" fill="#fde2c8" />
 
       <motion.g style={{ x: far }}>
         <Skyline />
@@ -266,7 +266,7 @@ function Scene({ p }: { p: MotionValue<number> }) {
       <motion.g style={{ x: camera }}>
         {/* passeio e estrada */}
         <rect x="0" y={GROUND} width="3000" height="22" fill="#e6e0d2" />
-        <rect x="0" y={GROUND + 22} width="3000" height="140" fill="#33433d" />
+        <rect x="0" y={GROUND + 22} width="3000" height="140" fill="#2e2e2e" />
         {Array.from({ length: 38 }).map((_, i) => (
           <rect key={i} x={i * 80} y={GROUND + 82} width="40" height="6" rx="3" fill="#fff" opacity="0.65" />
         ))}
@@ -342,7 +342,7 @@ export function JourneyScroll() {
           <p className="inline-flex rounded-full bg-mint px-3 py-1 text-xs font-bold uppercase tracking-[0.15em] text-green-dark">
             {journey.label}
           </p>
-          <h2 id="viagem-titulo" className="mt-3 font-display text-2xl font-extrabold tracking-tight text-forest sm:text-4xl">
+          <h2 id="viagem-titulo" className="mt-3 font-display text-2xl font-semibold tracking-tight text-forest sm:text-4xl">
             {journey.title}
           </h2>
         </div>
@@ -367,7 +367,7 @@ export function JourneyScroll() {
           {steps}
           {!reduce && (
             <div className="mt-5 min-h-28 md:hidden" aria-live="polite">
-              <p className="font-display text-2xl font-extrabold text-forest">
+              <p className="font-display text-2xl font-semibold text-forest">
                 {step + 1}. {journey.steps[step].title}
               </p>
               <p className="mt-2 text-base leading-relaxed text-muted">{journey.steps[step].text}</p>

@@ -21,7 +21,7 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex h-18 max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
-        <a href="#inicio" className="flex items-center gap-2.5 whitespace-nowrap font-display text-base font-extrabold tracking-tight text-forest sm:text-lg">
+        <a href="#inicio" className="flex items-center gap-2.5 whitespace-nowrap font-display text-base font-semibold tracking-tight text-forest sm:text-lg">
           <span className="flex size-9 items-center justify-center rounded-xl bg-forest text-mint">
             <Icon name="box" className="size-5" />
           </span>

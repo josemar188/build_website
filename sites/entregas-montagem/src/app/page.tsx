@@ -20,7 +20,7 @@ function Label({ children, light = false }: { children: React.ReactNode; light?:
   );
 }
 
-const h2 = "mt-5 font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl";
+const h2 = "mt-5 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-5xl";
 const wa = whatsappLink(quickMessage);
 
 // Ilustração de cada cartão de serviço, pela mesma ordem de services.items
@@ -43,60 +43,31 @@ export default function Home() {
 
       <main id="conteudo">
         {/* HERO */}
-        <section id="inicio" className="relative overflow-hidden pt-28 sm:pt-32">
-          <div
-            aria-hidden="true"
-            className="absolute -right-40 -top-40 size-[34rem] rounded-full bg-mint/70 blur-3xl"
-          />
-          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:pb-28">
-            <div>
-              <HeroText>
-                <p className="inline-flex items-center gap-2 rounded-full bg-card px-3 py-1.5 text-sm font-semibold text-green-dark ring-1 ring-line">
-                  <Icon name="pin" className="size-4" />
-                  {hero.eyebrow}
-                </p>
-              </HeroText>
-              <HeroText delay={0.1}>
-                <h1 className="mt-6 font-display text-[2.6rem] font-extrabold leading-[1.05] tracking-tight text-forest text-balance sm:text-6xl">
-                  {hero.title} <span className="text-green">{hero.titleAccent}</span>
-                </h1>
-              </HeroText>
-              <HeroText delay={0.22}>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{hero.lead}</p>
-              </HeroText>
-              <HeroText delay={0.34} className="mt-9 flex flex-wrap items-center gap-3">
-                <a
-                  href={wa}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-14 items-center gap-3 rounded-full bg-whatsapp px-7 text-base font-semibold text-white shadow-lg shadow-whatsapp/25 transition-colors duration-200 hover:bg-green-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
-                >
-                  <Icon name="whatsapp" className="size-6" />
-                  {hero.primary}
-                </a>
-                <a
-                  href="#servicos"
-                  className="inline-flex min-h-14 items-center gap-2 rounded-full px-5 font-semibold text-forest ring-1 ring-line transition-colors duration-200 hover:bg-card focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
-                >
-                  {hero.secondary}
-                </a>
-              </HeroText>
-              <HeroText delay={0.46}>
-                <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-medium text-ink-soft sm:max-w-lg">
-                  {hero.trust.map((t) => (
-                    <li key={t} className="flex items-center gap-2">
-                      <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-green text-white">
-                        <Icon name="check" className="size-3.5" />
-                      </span>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </HeroText>
+        <section
+          id="inicio"
+          className="relative flex min-h-dvh flex-col overflow-hidden bg-[radial-gradient(ellipse_at_center,#ffffff_0%,var(--color-paper)_70%)] pt-24"
+        >
+          <div className="relative flex flex-1 flex-col items-center justify-center px-5 pb-10 text-center">
+            {/* anel de cor desfocado */}
+            <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 size-[min(92vw,44rem)] -translate-x-1/2 -translate-y-1/2">
+              <div className="halo size-full rounded-full" />
             </div>
 
-            <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-              <div className="relative aspect-square overflow-hidden rounded-[2rem] bg-line">
+            <HeroText className="relative">
+              <p className="inline-flex items-center gap-2 rounded-full border border-line bg-card/70 px-4 py-1.5 text-sm font-medium text-ink-soft backdrop-blur">
+                <Icon name="pin" className="size-4" />
+                {hero.eyebrow}
+              </p>
+            </HeroText>
+
+            <HeroText delay={0.1} className="relative">
+              <h1 className="mt-7 max-w-5xl font-display text-[2.7rem] font-semibold leading-[1.02] tracking-[-0.045em] text-balance sm:text-7xl lg:text-[6.5rem]">
+                <span className="text-soft">{hero.title}</span> <span className="text-ink">{hero.titleAccent}</span>
+              </h1>
+            </HeroText>
+
+            <HeroText delay={0.25} className="relative mt-10 flex flex-col items-center gap-5 sm:flex-row">
+              <div className="relative size-28 overflow-hidden rounded-full bg-line shadow-[0_20px_50px_-20px_rgb(0_0_0/0.35)] ring-4 ring-white sm:size-32">
                 <HeroImageReveal className="absolute inset-0">
                   <Image
                     src={portrait}
@@ -104,24 +75,54 @@ export default function Home() {
                     fill
                     preload
                     placeholder="blur"
-                    sizes="(min-width: 1024px) 40vw, (min-width: 640px) 28rem, 90vw"
+                    sizes="8rem"
                     className="object-cover object-[60%_30%]"
                   />
                 </HeroImageReveal>
               </div>
-              <HeroText delay={0.9} className="absolute -bottom-6 left-4 sm:-left-6">
-                <div className="flex items-center gap-3 rounded-2xl bg-card px-5 py-4 shadow-xl ring-1 ring-line">
-                  <span className="flex size-11 items-center justify-center rounded-xl bg-orange-soft text-orange">
-                    <Icon name="truck" />
-                  </span>
-                  <div>
-                    <p className="font-display font-bold text-forest">{hero.badge}</p>
-                    <p className="text-sm text-muted">Resposta rápida no WhatsApp</p>
-                  </div>
+              <div className="flex flex-col items-center gap-3 sm:items-start">
+                <p className="text-sm text-muted">{hero.meet}</p>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={wa}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-13 items-center gap-2.5 rounded-full bg-ink px-6 font-medium text-white transition-colors duration-200 hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+                  >
+                    <Icon name="whatsapp" className="size-5" />
+                    {hero.primary}
+                  </a>
+                  <a
+                    href="#servicos"
+                    aria-label={hero.secondary}
+                    className="flex size-13 items-center justify-center rounded-full bg-ink text-white transition-transform duration-200 hover:translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+                  >
+                    <Icon name="arrow" className="size-5 rotate-90" />
+                  </a>
                 </div>
-              </HeroText>
-            </div>
+              </div>
+            </HeroText>
           </div>
+
+          {/* barra inferior: etiqueta + texto à esquerda, pílulas à direita */}
+          <HeroText delay={0.45} className="relative">
+            <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 pb-10 sm:px-8 md:flex-row md:items-end md:justify-between">
+              <div className="flex gap-8">
+                <div className="max-w-md">
+                  <p className="text-xs font-medium text-muted">{hero.label}</p>
+                  <p className="mt-2 text-lg leading-snug text-ink">{hero.lead}</p>
+                </div>
+                <span aria-hidden="true" className="hidden w-px self-stretch bg-line lg:block" />
+              </div>
+              <ul className="flex flex-wrap gap-2 md:justify-end">
+                {hero.tags.map((tag) => (
+                  <li key={tag} className="rounded-full border border-line bg-card/80 px-5 py-2.5 text-sm text-ink">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </HeroText>
         </section>
 
         {/* VIAGEM (animação com scroll) */}
@@ -201,7 +202,7 @@ export default function Home() {
             <Stagger as="ol" className="mt-14 grid gap-6 md:grid-cols-3">
               {process.steps.map((step, i) => (
                 <StaggerItem key={step.title} className="relative rounded-3xl bg-card p-8 ring-1 ring-line">
-                  <span className="flex size-12 items-center justify-center rounded-full bg-green font-display text-xl font-extrabold text-white">{i + 1}</span>
+                  <span className="flex size-12 items-center justify-center rounded-full bg-green font-display text-xl font-semibold text-white">{i + 1}</span>
                   <h3 className="mt-6 font-display text-2xl font-bold text-forest">{step.title}</h3>
                   <p className="mt-3 leading-relaxed text-muted">{step.text}</p>
                 </StaggerItem>
@@ -323,7 +324,7 @@ export default function Home() {
       <footer className="bg-forest text-white/70">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 text-sm sm:px-8 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="font-display text-lg font-extrabold text-white">{site.brand}</p>
+            <p className="font-display text-lg font-semibold text-white">{site.brand}</p>
             <p className="mt-1">Entrega e montagem de móveis · {area.title}</p>
           </div>
           <p className="max-w-md md:text-right">{footer.disclaimer}</p>

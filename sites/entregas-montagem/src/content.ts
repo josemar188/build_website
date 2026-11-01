@@ -26,15 +26,17 @@ export const nav = [
 
 export const hero = {
   eyebrow: "Grande Lisboa e Setúbal",
-  title: "Compraste os móveis?",
-  titleAccent: "Nós levamos e montamos.",
+  // Título em dois tons: a primeira parte a cinzento, a segunda a preto
+  title: "Os teus móveis,",
+  titleAccent: "entregues e montados.",
+  label: "Entrega & Montagem",
   lead:
-    "Recolho as tuas compras do IKEA (ou de outra loja), entrego em casa e deixo tudo montado, nivelado e sem embalagens. Tu só escolhes onde fica.",
-  primary: "Pedir orçamento no WhatsApp",
+    "Recolho as tuas compras do IKEA (ou de outra loja), entrego em casa e deixo tudo montado, nivelado e sem embalagens.",
+  primary: "Pedir orçamento",
   secondary: "Ver serviços",
+  meet: "Sou eu que vou a tua casa.",
   photoAlt: "Retrato do responsável pelas entregas e montagens, a sorrir, com a Ponte 25 de Abril ao fundo",
-  badge: "Orçamento grátis",
-  trust: ["Orçamento grátis e rápido", "Hora marcada", "Montagem cuidadosa", "Levo as embalagens"],
+  tags: ["Entrega", "Montagem", "Fixação à parede", "Sem embalagens"],
 };
 
 export const journey = {
