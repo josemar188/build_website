@@ -41,3 +41,15 @@ Pede ao Claude Code, por exemplo: *"cria um site novo em `sites/restaurante-x` p
 ## Publicar (Vercel)
 
 Ao importar o repositório na Vercel, escolhe em **Root Directory** a pasta do site (por exemplo `sites/lia-psicologa`). Para publicar outro site do mesmo repositório, cria outro projeto na Vercel com a pasta desse site.
+
+## Segurança
+
+Os sites são estáticos: não têm servidor próprio, base de dados, contas nem API. Mesmo assim:
+
+- **Cabeçalhos de segurança** (CSP, HSTS, `nosniff`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, COOP):
+  - sites Next.js: em `next.config.ts` (e `X-Powered-By` desligado);
+  - site Vite: em `vercel.json` (Vercel), `public/_headers` (Netlify/Cloudflare Pages) e `security-headers.json` (`npm run preview`).
+- **Novo domínio externo** (vídeo, imagens, fontes): junta-o à CSP, senão o browser bloqueia-o.
+- **Formulários**: só preparam uma mensagem para o WhatsApp; o texto é limitado, limpo e codificado. Nada é guardado.
+- **Segredos**: nunca no repositório. Ficheiros `.env*` e `.claude/settings.local.json` estão no `.gitignore`; o `.mcp.json` só lê a variável `API_KEY_21ST`.
+- **Dependências**: corre `npm audit --omit=dev` em cada site antes de publicar.

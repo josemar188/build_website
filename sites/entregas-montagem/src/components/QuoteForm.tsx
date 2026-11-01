@@ -8,6 +8,9 @@ const field =
   "mt-2 block w-full rounded-xl border border-line bg-card px-4 py-3 text-base text-ink placeholder:text-muted/70 transition-colors duration-200 focus:border-green focus:outline-none focus:ring-2 focus:ring-green/30 aria-[invalid=true]:border-orange";
 const label = "text-sm font-semibold text-ink";
 
+// Tamanho máximo de cada campo
+const LIMITS = { name: 60, place: 60, service: 40, date: 10, floor: 80, items: 600 } as const;
+
 export function QuoteForm() {
   const id = useId();
   const f = quote.fields;
@@ -16,7 +19,13 @@ export function QuoteForm() {
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const get = (k: string) => String(data.get(k) ?? "").trim();
+    // Limpa o texto: tira caracteres de controlo e limita o tamanho.
+    // A mensagem só vai no link do WhatsApp (codificada), nada é guardado.
+    const get = (k: string) =>
+      String(data.get(k) ?? "")
+        .replace(/[\u0000-\u0009\u000B-\u001F\u007F]/g, "")
+        .trim()
+        .slice(0, LIMITS[k as keyof typeof LIMITS] ?? 100);
     const name = get("name");
     const service = get("service");
     const place = get("place");
@@ -45,7 +54,7 @@ export function QuoteForm() {
           <label htmlFor={`${id}-name`} className={label}>
             {f.name}
           </label>
-          <input id={`${id}-name`} name="name" autoComplete="given-name" required aria-invalid={error || undefined} className={field} />
+          <input id={`${id}-name`} name="name" autoComplete="given-name" required maxLength={LIMITS.name} aria-invalid={error || undefined} className={field} />
         </div>
 
         <div>
@@ -55,6 +64,7 @@ export function QuoteForm() {
           <input
             id={`${id}-place`}
             name="place"
+            maxLength={LIMITS.place}
             autoComplete="address-level2"
             placeholder={f.placePlaceholder}
             required
@@ -89,14 +99,14 @@ export function QuoteForm() {
           <label htmlFor={`${id}-floor`} className={label}>
             {f.floor} <span className="font-normal text-muted">({f.optional})</span>
           </label>
-          <input id={`${id}-floor`} name="floor" placeholder={f.floorPlaceholder} className={field} />
+          <input id={`${id}-floor`} name="floor" maxLength={LIMITS.floor} placeholder={f.floorPlaceholder} className={field} />
         </div>
 
         <div className="sm:col-span-2">
           <label htmlFor={`${id}-items`} className={label}>
             {f.items} <span className="font-normal text-muted">({f.optional})</span>
           </label>
-          <textarea id={`${id}-items`} name="items" rows={3} placeholder={f.itemsPlaceholder} className={`${field} resize-y`} />
+          <textarea id={`${id}-items`} name="items" rows={3} maxLength={LIMITS.items} placeholder={f.itemsPlaceholder} className={`${field} resize-y`} />
         </div>
       </div>
 

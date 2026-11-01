@@ -14,6 +14,8 @@ export const whatsappLink = (text = "Olá! Gostava de pedir um orçamento para e
 export const videos = {
   // Vídeo de fundo do topo (do prompt). EDITAR: troca por um vídeo teu,
   // por exemplo gerado com a Higgsfield (carrinha, caixas, montagem).
+  // ATENÇÃO: se o vídeo estiver noutro domínio, junta esse domínio a "media-src"
+  // em vercel.json, public/_headers e security-headers.json (segurança CSP).
   hero: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260619_191346_9d19d66e-86a4-47f7-8dc6-712c1788c3b2.mp4",
   // Vídeo de fundo da secção de serviços (opcional; vazio = fundo com brilho)
   services: "",
