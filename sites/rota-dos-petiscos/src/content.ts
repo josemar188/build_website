@@ -60,6 +60,8 @@ export const menu = {
       { name: "Espetada pendurada", note: "Vazia, camarão e ananás, servida na vertical" },
       { name: "Lagartos grelhados", note: "Com arroz, batata frita e molho da casa" },
       { name: "Moelas", note: "Um dos petiscos mais pedidos" },
+      { name: "Caracóis", note: "Na época, à moda da casa" },
+      { name: "Pica-pau", note: "Carne em molho, para molhar o pão" },
       { name: "Bitoque", note: "Bife, ovo estrelado, arroz e batata frita" },
     ] as Dish[],
   },
@@ -76,6 +78,7 @@ export const menu = {
     ] as Dish[],
   },
   // EDITAR: confirmar nomes dos pratos; os preços estão no Google/na ementa física
+  sweets: "Para acabar: cheesecake de frutos vermelhos ou petit gâteau com gelado de baunilha.",
   note: "Ementa completa e preços no restaurante. Os pratos podem variar consoante o mercado.",
 };
 
@@ -105,6 +108,12 @@ export const gallery = {
     { image: "moelas", alt: "Frigideira de moelas com molho de tomate e cesto de batata frita" },
     { image: "cheesecake", alt: "Fatia de cheesecake de frutos vermelhos, com o letreiro ROTA ao fundo" },
     { image: "bitoque", alt: "Bitoque com ovo estrelado, arroz e batata frita" },
+    { image: "caracois", alt: "Travessa de caracóis" },
+    { image: "tabua-marisco-2", alt: "Tábua de marisco com sapateira, camarão, amêijoas e salada de polvo" },
+    { image: "porco-coentros", alt: "Frigideira de carne de porco grelhada com alho e coentros" },
+    { image: "pica-pau", alt: "Frigideira de pica-pau com molho e cenoura" },
+    { image: "lagartos-ardosia", alt: "Lagartos grelhados em ardósia com limão" },
+    { image: "petit-gateau", alt: "Petit gâteau com gelado de baunilha, canela e hortelã" },
   ],
 };
 

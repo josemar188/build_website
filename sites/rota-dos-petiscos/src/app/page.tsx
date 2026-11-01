@@ -5,16 +5,22 @@ import { celebrate, drinks, gallery, hero, intro, menu, nav, reviews, site, spac
 import batataDoce from "../../public/fotos/batata-doce.webp";
 import bitoque from "../../public/fotos/bitoque.webp";
 import camarao from "../../public/fotos/camarao.webp";
+import caracois from "../../public/fotos/caracois.webp";
 import cheesecake from "../../public/fotos/cheesecake.webp";
 import espetadaCamarao from "../../public/fotos/espetada-camarao.webp";
 import espetadaPendurada from "../../public/fotos/espetada-pendurada.webp";
 import esplanada from "../../public/fotos/esplanada.webp";
+import lagartosArdosia from "../../public/fotos/lagartos-ardosia.webp";
 import lulas from "../../public/fotos/lulas.webp";
 import moelas from "../../public/fotos/moelas.webp";
 import nacoVazia from "../../public/fotos/naco-vazia.webp";
+import petitGateau from "../../public/fotos/petit-gateau.webp";
+import picaPau from "../../public/fotos/pica-pau.webp";
+import porcoCoentros from "../../public/fotos/porco-coentros.webp";
 import sangriaCaipirinha from "../../public/fotos/sangria-caipirinha.webp";
 import sangriaMaracuja from "../../public/fotos/sangria-maracuja.webp";
 import tabuaMarisco from "../../public/fotos/tabua-marisco.webp";
+import tabuaMarisco2 from "../../public/fotos/tabua-marisco-2.webp";
 
 const photos: Record<string, StaticImageData> = {
   "batata-doce": batataDoce,
@@ -28,6 +34,12 @@ const photos: Record<string, StaticImageData> = {
   "naco-vazia": nacoVazia,
   "sangria-caipirinha": sangriaCaipirinha,
   "sangria-maracuja": sangriaMaracuja,
+  caracois,
+  "lagartos-ardosia": lagartosArdosia,
+  "petit-gateau": petitGateau,
+  "pica-pau": picaPau,
+  "porco-coentros": porcoCoentros,
+  "tabua-marisco-2": tabuaMarisco2,
 };
 
 function Label({ children }: { children: React.ReactNode }) {
@@ -145,7 +157,8 @@ export default function Home() {
                 <DishColumn col={menu.mar} />
               </StaggerItem>
             </Stagger>
-            <p className="mt-16 text-center text-sm text-muted">{menu.note}</p>
+            <p className="mx-auto mt-20 max-w-2xl text-center font-serif text-2xl font-light italic text-ink-soft">{menu.sweets}</p>
+            <p className="mt-6 text-center text-sm text-muted">{menu.note}</p>
           </div>
         </section>
 
