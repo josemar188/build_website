@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  /* Moderno e confiável: verde floresta + laranja de ação, fundo quente */
+  --color-paper: #f7f6f2;
+  --color-card: #ffffff;
+  --color-ink: #0f241d;
+  --color-ink-soft: #33443d;
+  --color-muted: #5a6a63;
+  --color-line: #e3e1d8;
+  --color-forest: #0b3b2e;
+  --color-green: #047857;
+  --color-green-dark: #065f46;
+  --color-mint: #d1fae5;
+  --color-orange: #c2410c;
+  --color-orange-soft: #ffedd5;
+  --color-whatsapp: #128c4a;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
