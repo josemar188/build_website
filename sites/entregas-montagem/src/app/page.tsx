@@ -43,84 +43,81 @@ export default function Home() {
 
       <main id="conteudo">
         {/* HERO */}
-        <section
-          id="inicio"
-          className="relative flex min-h-dvh flex-col overflow-hidden bg-[radial-gradient(ellipse_at_center,#ffffff_0%,var(--color-paper)_70%)] pt-24"
-        >
-          <div className="relative flex flex-1 flex-col items-center justify-center px-5 pb-10 text-center">
-            {/* anel de cor desfocado */}
-            <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 size-[min(92vw,44rem)] -translate-x-1/2 -translate-y-1/2">
-              <div className="halo size-full rounded-full" />
-            </div>
-
-            <HeroText className="relative">
-              <p className="inline-flex items-center gap-2 rounded-full border border-line bg-card/70 px-4 py-1.5 text-sm font-medium text-ink-soft backdrop-blur">
-                <Icon name="pin" className="size-4" />
+        <section id="inicio" className="relative flex min-h-[100svh] flex-col bg-[radial-gradient(ellipse_80%_60%_at_50%_35%,#ffffff_0%,var(--color-paper)_100%)] pt-28 sm:pt-32">
+          <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-5 pb-12 text-center sm:px-8">
+            <HeroText>
+              <p className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-1.5 text-[13px] font-medium tracking-wide text-ink-soft">
+                <Icon name="pin" className="size-3.5" />
                 {hero.eyebrow}
               </p>
             </HeroText>
 
-            <HeroText delay={0.1} className="relative">
-              <h1 className="mt-7 max-w-5xl font-display text-[2.7rem] font-semibold leading-[1.02] tracking-[-0.045em] text-balance sm:text-7xl lg:text-[6.5rem]">
-                <span className="text-soft">{hero.title}</span> <span className="text-ink">{hero.titleAccent}</span>
+            <HeroText delay={0.1}>
+              <h1 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.04] tracking-[-0.04em] text-balance sm:text-6xl lg:text-[5.25rem]">
+                <span className="text-soft">{hero.title}</span>
+                <br />
+                <span className="text-ink">{hero.titleAccent}</span>
               </h1>
             </HeroText>
 
-            <HeroText delay={0.25} className="relative mt-10 flex flex-col items-center gap-5 sm:flex-row">
-              <div className="relative size-28 overflow-hidden rounded-full bg-line shadow-[0_20px_50px_-20px_rgb(0_0_0/0.35)] ring-4 ring-white sm:size-32">
-                <HeroImageReveal className="absolute inset-0">
-                  <Image
-                    src={portrait}
-                    alt={hero.photoAlt}
-                    fill
-                    preload
-                    placeholder="blur"
-                    sizes="8rem"
-                    className="object-cover object-[60%_30%]"
-                  />
-                </HeroImageReveal>
-              </div>
-              <div className="flex flex-col items-center gap-3 sm:items-start">
-                <p className="text-sm text-muted">{hero.meet}</p>
-                <div className="flex items-center gap-2">
-                  <a
-                    href={wa}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-13 items-center gap-2.5 rounded-full bg-ink px-6 font-medium text-white transition-colors duration-200 hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-                  >
-                    <Icon name="whatsapp" className="size-5" />
-                    {hero.primary}
-                  </a>
-                  <a
-                    href="#servicos"
-                    aria-label={hero.secondary}
-                    className="flex size-13 items-center justify-center rounded-full bg-ink text-white transition-transform duration-200 hover:translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-                  >
-                    <Icon name="arrow" className="size-5 rotate-90" />
-                  </a>
+            <HeroText delay={0.2}>
+              <p className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-muted">{hero.lead}</p>
+            </HeroText>
+
+            <HeroText delay={0.3} className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
+              <div className="flex items-center gap-3 text-left">
+                <div className="relative size-14 shrink-0 overflow-hidden rounded-full bg-line ring-2 ring-white shadow-[0_8px_24px_-10px_rgb(0_0_0/0.35)]">
+                  <HeroImageReveal className="absolute inset-0">
+                    <Image
+                      src={portrait}
+                      alt={hero.photoAlt}
+                      fill
+                      preload
+                      placeholder="blur"
+                      sizes="3.5rem"
+                      className="object-cover object-[60%_25%]"
+                    />
+                  </HeroImageReveal>
                 </div>
+                <p className="max-w-[12rem] text-sm leading-snug text-muted">{hero.meet}</p>
+              </div>
+
+              <span aria-hidden="true" className="hidden h-10 w-px bg-line sm:block" />
+
+              <div className="flex items-center gap-2">
+                <a
+                  href={wa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-ink px-6 text-[15px] font-medium text-white transition-colors duration-200 hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+                >
+                  <Icon name="whatsapp" className="size-[18px]" />
+                  {hero.primary}
+                </a>
+                <a
+                  href="#servicos"
+                  aria-label={hero.secondary}
+                  className="flex size-12 items-center justify-center rounded-full border border-ink/15 bg-card text-ink transition-colors duration-200 hover:border-ink/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+                >
+                  <Icon name="arrow" className="size-[18px] rotate-90" />
+                </a>
               </div>
             </HeroText>
           </div>
 
-          {/* barra inferior: etiqueta + texto à esquerda, pílulas à direita */}
-          <HeroText delay={0.45} className="relative">
-            <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 pb-10 sm:px-8 md:flex-row md:items-end md:justify-between">
-              <div className="flex gap-8">
-                <div className="max-w-md">
-                  <p className="text-xs font-medium text-muted">{hero.label}</p>
-                  <p className="mt-2 text-lg leading-snug text-ink">{hero.lead}</p>
-                </div>
-                <span aria-hidden="true" className="hidden w-px self-stretch bg-line lg:block" />
+          {/* barra inferior discreta */}
+          <HeroText delay={0.45}>
+            <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
+              <div className="flex flex-col items-center gap-4 border-t border-line py-6 md:flex-row md:justify-between">
+                <p className="text-center text-sm text-muted md:text-left">{hero.label}</p>
+                <ul className="flex flex-wrap justify-center gap-2">
+                  {hero.tags.map((tag) => (
+                    <li key={tag} className="rounded-full border border-line bg-card px-4 py-2 text-[13px] text-ink-soft">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="flex flex-wrap gap-2 md:justify-end">
-                {hero.tags.map((tag) => (
-                  <li key={tag} className="rounded-full border border-line bg-card/80 px-5 py-2.5 text-sm text-ink">
-                    {tag}
-                  </li>
-                ))}
-              </ul>
             </div>
           </HeroText>
         </section>

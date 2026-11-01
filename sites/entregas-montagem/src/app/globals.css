@@ -46,35 +46,3 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
-
-/* Anel de cor desfocado (como na imagem de referência) */
-.halo {
-  background: conic-gradient(
-    from 210deg,
-    var(--color-peach),
-    #f8c99a 18%,
-    rgba(255, 255, 255, 0) 32%,
-    rgba(255, 255, 255, 0) 45%,
-    var(--color-teal) 60%,
-    var(--color-leaf) 72%,
-    rgba(255, 255, 255, 0) 86%,
-    var(--color-peach)
-  );
-  -webkit-mask: radial-gradient(circle, transparent 60%, #000 63%, #000 69%, transparent 72%);
-  mask: radial-gradient(circle, transparent 60%, #000 63%, #000 69%, transparent 72%);
-  filter: blur(22px);
-  opacity: 0.85;
-  animation: halo-spin 28s linear infinite;
-}
-
-@keyframes halo-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .halo {
-    animation: none !important;
-  }
-}

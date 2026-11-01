@@ -29,7 +29,7 @@ export const hero = {
   // Título em dois tons: a primeira parte a cinzento, a segunda a preto
   title: "Os teus móveis,",
   titleAccent: "entregues e montados.",
-  label: "Entrega & Montagem",
+  label: "Orçamento grátis · Hora marcada · Pagamento no fim",
   lead:
     "Recolho as tuas compras do IKEA (ou de outra loja), entrego em casa e deixo tudo montado, nivelado e sem embalagens.",
   primary: "Pedir orçamento",
