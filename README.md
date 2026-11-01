@@ -11,7 +11,8 @@ build_website/
 └── sites/
     ├── lia-psicologa/         ← site da psicóloga Lia (Next.js, PT/UK)
     ├── entregas-montagem/     ← entregas IKEA e montagem de móveis (Next.js, PT)
-    └── entregas-montagem-glass/ ← versão escura com vidro líquido (Vite + React)
+    ├── entregas-montagem-glass/ ← versão escura com vidro líquido (Vite + React)
+    └── joao-dourique/         ← Restaurante João d'Ourique (Next.js, PT)
 ```
 
 ## Sites
@@ -21,6 +22,7 @@ build_website/
 | [`sites/lia-psicologa`](sites/lia-psicologa) | Psicóloga Lia, consultas online, PT/UK | Next.js 16, TypeScript, Tailwind 4, Motion |
 | [`sites/entregas-montagem`](sites/entregas-montagem) | Entrega de compras IKEA e montagem de móveis, Grande Lisboa e Setúbal, pedidos por WhatsApp | Next.js 16, TypeScript, Tailwind 4, Motion |
 | [`sites/entregas-montagem-glass`](sites/entregas-montagem-glass) | Versão escura e cinematográfica do site de entregas (vídeo de fundo, vidro líquido) | Vite, React, TypeScript, Tailwind 4, Framer Motion |
+| [`sites/joao-dourique`](sites/joao-dourique) | Restaurante João d'Ourique (Amora, Seixal): escuro e dourado, ementa, reservas por telefone | Next.js 16, TypeScript, Tailwind 4, Motion |
 
 ## Trabalhar num site
 

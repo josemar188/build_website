@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  /* Escuro e dourado: exclusividade e requinte */
+  --color-night: #0b0a08;
+  --color-coal: #14120f;
+  --color-coal-2: #1c1915;
+  --color-gold: #c9a96e;
+  --color-gold-soft: #e2cfa2;
+  --color-cream: #efe8dc;
+  --color-muted: #a8a093;
+  --color-line: rgb(201 169 110 / 0.22);
+
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-jost), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-night);
+  color: var(--color-cream);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-night);
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
