@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
+import { HeroImageReveal, HeroText, MotionProvider, Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { dictionaries, isLocale, site } from "@/content";
 import portrait from "../../../public/lia-portrait.webp";
 
@@ -26,7 +27,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const t = dictionaries[lang];
 
   return (
-    <>
+    <MotionProvider>
       <a
         href="#conteudo"
         className="sr-only z-[60] rounded bg-ink px-4 py-2 text-cream focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
@@ -40,12 +41,18 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <section id="inicio" className="relative overflow-hidden pt-28 sm:pt-32 lg:pt-36">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:pb-28">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.3em] text-wine">{t.hero.eyebrow}</p>
+              <HeroText>
+                <p className="text-xs font-medium uppercase tracking-[0.3em] text-wine">{t.hero.eyebrow}</p>
+              </HeroText>
+              <HeroText delay={0.12}>
               <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.05] tracking-tight text-ink text-balance sm:text-6xl lg:text-7xl">
                 {t.hero.titleStart} <em className="text-wine">{t.hero.titleEmphasis}</em> {t.hero.titleEnd}
               </h1>
+              </HeroText>
+              <HeroText delay={0.28}>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted">{t.hero.lead}</p>
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+              </HeroText>
+              <HeroText delay={0.42} className="mt-10 flex flex-wrap items-center gap-4">
                 <a
                   href="#contacto"
                   className="inline-flex min-h-12 items-center gap-2 rounded-full bg-wine px-7 font-medium text-cream transition-colors duration-200 hover:bg-wine-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wine"
@@ -61,12 +68,13 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 >
                   {t.hero.secondary}
                 </a>
-              </div>
+              </HeroText>
             </div>
 
             <div className="relative mx-auto w-full max-w-md lg:max-w-none">
               <div aria-hidden="true" className="absolute -right-3 -top-3 bottom-6 left-6 rounded-t-full border border-wine/40 sm:-right-5 sm:-top-5" />
               <div className="relative aspect-[4/5] overflow-hidden rounded-t-full bg-sand">
+                <HeroImageReveal className="absolute inset-0">
                 <Image
                   src={portrait}
                   alt={t.hero.photoAlt}
@@ -76,11 +84,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                   className="object-cover object-[50%_30%]"
                   placeholder="blur"
                 />
+                </HeroImageReveal>
               </div>
-              <p className="absolute -bottom-5 left-4 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-cream shadow-lg sm:left-[-1.5rem]">
-                <span aria-hidden="true" className="size-2 rounded-full bg-gold" />
-                {t.hero.badge}
-              </p>
+              <HeroText delay={1.1} className="absolute -bottom-5 left-4 sm:left-[-1.5rem]">
+                <p className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm text-cream shadow-lg">
+                  <span aria-hidden="true" className="size-2 rounded-full bg-gold" />
+                  {t.hero.badge}
+                </p>
+              </HeroText>
             </div>
           </div>
         </section>
@@ -88,11 +99,11 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         {/* SOBRE */}
         <section id="sobre" className="border-t border-line bg-sand/60">
           <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20 lg:py-32">
-            <div>
+            <Reveal>
               <Label index="01">{t.about.label}</Label>
               <h2 className="mt-6 font-serif text-4xl leading-tight text-ink sm:text-5xl">{t.about.title}</h2>
-            </div>
-            <div>
+            </Reveal>
+            <Reveal delay={0.15}>
               {t.about.paragraphs.map((p) => (
                 <p key={p.slice(0, 24)} className="mb-6 text-lg leading-relaxed text-ink-soft">
                   {p}
@@ -101,14 +112,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <blockquote className="mt-10 border-l-2 border-wine pl-6 font-serif text-2xl italic leading-snug text-wine sm:text-3xl">
                 {t.about.quote}
               </blockquote>
-            </div>
+            </Reveal>
           </div>
         </section>
 
         {/* CONSULTAS */}
         <section id="consultas" className="bg-ink text-cream">
           <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 lg:py-32">
-            <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
+            <Reveal className="grid gap-8 lg:grid-cols-2 lg:items-end">
               <div>
                 <Label index="02" light>
                   {t.services.label}
@@ -116,18 +127,18 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 <h2 className="mt-6 font-serif text-4xl leading-tight sm:text-5xl">{t.services.title}</h2>
               </div>
               <p className="max-w-lg text-lg leading-relaxed text-cream/75 lg:justify-self-end">{t.services.intro}</p>
-            </div>
+            </Reveal>
 
-            <ul className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-cream/10 bg-cream/10 md:grid-cols-3">
+            <Stagger className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-cream/10 bg-cream/10 md:grid-cols-3">
               {t.services.items.map((s, i) => (
-                <li key={s.name} className="flex flex-col bg-ink p-8 transition-colors duration-300 hover:bg-ink-soft sm:p-10">
+                <StaggerItem key={s.name} className="flex flex-col bg-ink p-8 transition-colors duration-300 hover:bg-ink-soft sm:p-10">
                   <span className="font-serif text-5xl italic text-gold/80">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="mt-8 font-serif text-2xl">{s.name}</h3>
                   <p className="mt-2 text-sm uppercase tracking-[0.2em] text-gold">{s.duration}</p>
                   <p className="mt-5 leading-relaxed text-cream/75">{s.description}</p>
-                </li>
+                </StaggerItem>
               ))}
-            </ul>
+            </Stagger>
 
             <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
               <p className="text-cream/70">{t.services.priceNote}</p>
@@ -144,23 +155,25 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         {/* TEMAS */}
         <section id="temas">
           <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 lg:py-32">
-            <Label index="03">{t.topics.label}</Label>
-            <h2 className="mt-6 max-w-2xl font-serif text-4xl leading-tight text-ink sm:text-5xl">{t.topics.title}</h2>
-            <ul className="mt-16 grid border-t border-line sm:grid-cols-2 lg:grid-cols-3">
+            <Reveal>
+              <Label index="03">{t.topics.label}</Label>
+              <h2 className="mt-6 max-w-2xl font-serif text-4xl leading-tight text-ink sm:text-5xl">{t.topics.title}</h2>
+            </Reveal>
+            <Stagger className="mt-16 grid border-t border-line sm:grid-cols-2 lg:grid-cols-3">
               {t.topics.items.map((item) => (
-                <li key={item.name} className="border-b border-line py-8 sm:pr-10">
+                <StaggerItem key={item.name} className="border-b border-line py-8 sm:pr-10">
                   <h3 className="font-serif text-2xl text-ink">{item.name}</h3>
                   <p className="mt-3 leading-relaxed text-muted">{item.text}</p>
-                </li>
+                </StaggerItem>
               ))}
-            </ul>
+            </Stagger>
           </div>
         </section>
 
         {/* PSICOLOGIA NO ECRÃ */}
         <section aria-labelledby="ecra-titulo" className="bg-wine text-cream">
           <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 lg:grid-cols-2 lg:items-center lg:py-28">
-            <div>
+            <Reveal>
               <p className="text-xs font-medium uppercase tracking-[0.3em] text-cream/80">{t.screen.label}</p>
               <h2 id="ecra-titulo" className="mt-6 font-serif text-4xl italic leading-tight sm:text-5xl">
                 {t.screen.title}
@@ -179,10 +192,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 </svg>
                 {t.screen.link} · {site.instagramHandle}
               </a>
-            </div>
-            <ul className="grid grid-cols-2 gap-4">
+            </Reveal>
+            <Stagger className="grid grid-cols-2 gap-4">
               {t.screen.examples.map((title, i) => (
-                <li
+                <StaggerItem
                   key={title}
                   className={`flex aspect-[3/4] flex-col justify-between rounded-xl border border-cream/25 bg-wine-dark/60 p-5 ${
                     i % 2 === 1 ? "translate-y-8" : ""
@@ -194,39 +207,41 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                     ))}
                   </span>
                   <span className="font-serif text-2xl italic sm:text-3xl">“{title}”</span>
-                </li>
+                </StaggerItem>
               ))}
-            </ul>
+            </Stagger>
           </div>
         </section>
 
         {/* COMO FUNCIONA */}
         <section id="como-funciona" className="border-b border-line">
           <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 lg:py-32">
-            <Label index="04">{t.process.label}</Label>
-            <h2 className="mt-6 font-serif text-4xl leading-tight text-ink sm:text-5xl">{t.process.title}</h2>
-            <ol className="mt-16 grid gap-10 md:grid-cols-3 md:gap-8">
+            <Reveal>
+              <Label index="04">{t.process.label}</Label>
+              <h2 className="mt-6 font-serif text-4xl leading-tight text-ink sm:text-5xl">{t.process.title}</h2>
+            </Reveal>
+            <Stagger as="ol" className="mt-16 grid gap-10 md:grid-cols-3 md:gap-8">
               {t.process.steps.map((step, i) => (
-                <li key={step.title} className="relative">
+                <StaggerItem key={step.title} className="relative">
                   <span className="flex size-14 items-center justify-center rounded-full border border-wine font-serif text-xl italic text-wine">
                     {i + 1}
                   </span>
                   <h3 className="mt-6 font-serif text-2xl text-ink">{step.title}</h3>
                   <p className="mt-3 leading-relaxed text-muted">{step.text}</p>
-                </li>
+                </StaggerItem>
               ))}
-            </ol>
+            </Stagger>
           </div>
         </section>
 
         {/* FAQ */}
         <section id="perguntas" className="bg-sand/60">
           <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20 lg:py-32">
-            <div>
+            <Reveal>
               <Label index="05">{t.faq.label}</Label>
               <h2 className="mt-6 font-serif text-4xl leading-tight text-ink sm:text-5xl">{t.faq.title}</h2>
-            </div>
-            <div className="border-t border-line">
+            </Reveal>
+            <Reveal delay={0.15} className="border-t border-line">
               {t.faq.items.map((item) => (
                 <details key={item.q} className="group border-b border-line">
                   <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-5 font-serif text-xl text-ink transition-colors duration-200 hover:text-wine focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wine [&::-webkit-details-marker]:hidden">
@@ -241,13 +256,13 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                   <p className="pb-6 pr-12 leading-relaxed text-muted">{item.a}</p>
                 </details>
               ))}
-            </div>
+            </Reveal>
           </div>
         </section>
 
         {/* CONTACTO */}
         <section id="contacto" className="relative overflow-hidden bg-ink text-cream">
-          <div className="mx-auto max-w-4xl px-5 py-28 text-center sm:px-8 lg:py-36">
+          <Reveal className="mx-auto max-w-4xl px-5 py-28 text-center sm:px-8 lg:py-36">
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-gold">{t.contact.label}</p>
             <h2 className="mt-6 font-serif text-5xl italic leading-tight sm:text-7xl">{t.contact.title}</h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-cream/75">{t.contact.text}</p>
@@ -267,7 +282,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               </a>
             </p>
             <p className="mt-12 text-sm text-cream/60">{t.contact.note}</p>
-          </div>
+          </Reveal>
         </section>
       </main>
 
@@ -282,6 +297,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </a>
         </div>
       </footer>
-    </>
+    </MotionProvider>
   );
 }
