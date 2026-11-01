@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
@@ -11,6 +10,10 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+  // A página inicial abre em português; o botão de língua troca para /uk
+  async redirects() {
+    return [{ source: "/", destination: "/pt", permanent: false }];
   },
 };
 
