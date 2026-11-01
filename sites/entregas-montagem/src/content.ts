@@ -37,6 +37,18 @@ export const hero = {
   trust: ["Orçamento grátis e rápido", "Hora marcada", "Montagem cuidadosa", "Levo as embalagens"],
 };
 
+export const journey = {
+  label: "A viagem dos teus móveis",
+  title: "Da loja até tua casa, já montado",
+  hint: "Faz scroll para acompanhar a entrega",
+  steps: [
+    { title: "Recolha", text: "Levanto as tuas compras na loja e carrego tudo na carrinha, bem protegido." },
+    { title: "A caminho", text: "Atravesso Lisboa ou a Margem Sul até à tua morada, à hora combinada." },
+    { title: "Entrega", text: "Descarrego e levo tudo para dentro de casa, até à divisão certa." },
+    { title: "Montagem", text: "Monto, nivelo e deixo tudo pronto a usar. Tu só tens de aproveitar." },
+  ],
+};
+
 export type IconName = "truck" | "tools" | "box" | "wall" | "recycle" | "undo";
 
 export const services = {

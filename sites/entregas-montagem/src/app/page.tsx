@@ -2,6 +2,7 @@ import Image from "next/image";
 import { HeroImageReveal, HeroText, MotionProvider, Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { Icon } from "@/components/Icon";
 import { AssemblyIllustration, DeliveryIllustration, OrderIllustration } from "@/components/Illustrations";
+import { JourneyScroll } from "@/components/JourneyScroll";
 import { QuoteForm } from "@/components/QuoteForm";
 import { SiteHeader } from "@/components/SiteHeader";
 import { about, area, faq, footer, hero, process, quickMessage, quote, services, site, whatsappLink } from "@/content";
@@ -122,6 +123,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* VIAGEM (animação com scroll) */}
+        <JourneyScroll />
 
         {/* SERVIÇOS */}
         <section id="servicos" className="bg-card">
