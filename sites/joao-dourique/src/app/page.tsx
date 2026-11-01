@@ -1,11 +1,15 @@
 import Image from "next/image";
 import { HeroText, MotionProvider, Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { SiteHeader } from "@/components/SiteHeader";
-import { footer, hero, house, kitchen, menu, nav, reservation, site } from "@/content";
+import { footer, hero, house, kitchen, location, menu, nav, reservation, site, testimonial } from "@/content";
+import bacalhau from "../../public/bacalhau.webp";
 import bitoque from "../../public/bitoque.webp";
+import coreto from "../../public/coreto.webp";
 import petiscos from "../../public/petiscos.webp";
+import polvo from "../../public/polvo.webp";
+import sala from "../../public/sala.webp";
 
-const photos = { petiscos, bitoque };
+const photos = { petiscos, polvo, bacalhau, bitoque };
 
 /** Linha dourada fina com losango ao centro. */
 function Ornament({ className = "" }: { className?: string }) {
@@ -99,18 +103,34 @@ export default function Home() {
 
         {/* A CASA */}
         <section id="casa" className="border-t border-line bg-night">
-          <div className="mx-auto grid max-w-6xl gap-14 px-6 py-28 lg:grid-cols-[1fr_1fr] lg:gap-24 lg:px-8 lg:py-36">
+          <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-28 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:px-8 lg:py-36">
             <Reveal>
               <Eyebrow>{house.label}</Eyebrow>
               <h2 className="mt-6 font-serif text-5xl font-normal leading-[1.05] text-cream lg:text-6xl">{house.title}</h2>
               <Ornament className="mt-8" />
+              <div className="mt-10">
+                {house.paragraphs.map((p) => (
+                  <p key={p.slice(0, 20)} className="mb-6 text-lg leading-[1.8] text-muted">
+                    {p}
+                  </p>
+                ))}
+              </div>
             </Reveal>
             <Reveal delay={0.15}>
-              {house.paragraphs.map((p) => (
-                <p key={p.slice(0, 20)} className="mb-6 text-lg leading-[1.8] text-muted">
-                  {p}
-                </p>
-              ))}
+              <figure className="relative mx-auto max-w-md lg:max-w-none">
+                <div aria-hidden="true" className="absolute -right-4 -top-4 bottom-10 left-10 border border-gold/30" />
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <Image
+                    src={sala}
+                    alt={house.photoAlt}
+                    fill
+                    placeholder="blur"
+                    sizes="(min-width: 1024px) 40vw, 90vw"
+                    className="object-cover object-[50%_65%]"
+                  />
+                </div>
+                <figcaption className="mt-4 font-serif text-lg italic text-muted">{house.photoCaption}</figcaption>
+              </figure>
             </Reveal>
           </div>
           <Stagger as="div" className="mx-auto grid max-w-6xl border-t border-line px-6 sm:grid-cols-3 lg:px-8">
@@ -133,9 +153,9 @@ export default function Home() {
               <p className="mt-8 text-lg leading-relaxed text-muted">{kitchen.lead}</p>
             </Reveal>
 
-            <Stagger as="div" className="mt-20 grid gap-10 md:grid-cols-2 md:gap-8">
+            <Stagger as="div" className="mt-20 grid gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-4">
               {kitchen.items.map((item, i) => (
-                <StaggerItem as="div" key={item.title} className={i === 1 ? "md:mt-24" : ""}>
+                <StaggerItem as="div" key={item.title} className={i % 2 === 1 ? "md:mt-24" : ""}>
                   <figure>
                     <div className="group relative aspect-[4/5] overflow-hidden">
                       <Image
@@ -163,6 +183,25 @@ export default function Home() {
               </p>
             </Reveal>
           </div>
+        </section>
+
+        {/* AVALIAÇÃO */}
+        <section aria-label="Avaliação de um cliente" className="border-t border-line bg-night">
+          <Reveal className="mx-auto max-w-3xl px-6 py-24 text-center lg:py-28">
+            <span aria-hidden="true" className="block font-serif text-7xl leading-none text-gold/60">“</span>
+            <blockquote className="mt-2 font-serif text-3xl italic leading-snug text-cream lg:text-5xl">{testimonial.quote}</blockquote>
+            <div className="mt-8 flex items-center justify-center gap-1" aria-label={`${testimonial.stars} de 5 estrelas`}>
+              {Array.from({ length: testimonial.stars }).map((_, i) => (
+                <Star key={i} />
+              ))}
+            </div>
+            <p className="mt-4 text-sm uppercase tracking-[0.3em] text-muted">
+              {testimonial.author} · {testimonial.source}
+            </p>
+            <p className="mt-2 text-sm text-muted">
+              {site.rating} no Google · {site.reviews} avaliações
+            </p>
+          </Reveal>
         </section>
 
         {/* A EMENTA */}
@@ -220,6 +259,47 @@ export default function Home() {
               {reservation.button}
             </a>
           </Reveal>
+        </section>
+        {/* ONDE ESTAMOS */}
+        <section id="onde" className="border-t border-line bg-night">
+          <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-28 lg:grid-cols-2 lg:gap-20 lg:px-8 lg:py-32">
+            <Reveal>
+              <figure>
+                <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[5/4] lg:aspect-[4/5]">
+                  <Image src={coreto} alt={location.photoAlt} fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+                  <div aria-hidden="true" className="absolute inset-0 ring-1 ring-inset ring-gold/20" />
+                </div>
+                <figcaption className="mt-4 font-serif text-lg italic text-muted">{location.photoCaption}</figcaption>
+              </figure>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <Eyebrow>{location.label}</Eyebrow>
+              <h2 className="mt-6 font-serif text-5xl font-normal leading-[1.05] text-cream lg:text-6xl">{location.title}</h2>
+              <Ornament className="mt-8" />
+              <p className="mt-8 text-lg leading-[1.8] text-muted">{location.text}</p>
+              <address className="mt-8 font-serif text-2xl not-italic leading-snug text-cream">
+                {site.address}
+                <br />
+                {site.postal}
+              </address>
+              <dl className="mt-6 space-y-1 text-cream/85">
+                {site.hours.map((h) => (
+                  <div key={h.label} className="flex gap-3">
+                    <dt className="w-16 text-muted">{h.label}</dt>
+                    <dd>{h.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                <a href={site.mapsHref} target="_blank" rel="noopener noreferrer" className={btnLine}>
+                  {location.button}
+                </a>
+                <a href={site.phoneHref} className={btnGold}>
+                  {site.phoneDisplay}
+                </a>
+              </div>
+            </Reveal>
+          </div>
         </section>
       </main>
 

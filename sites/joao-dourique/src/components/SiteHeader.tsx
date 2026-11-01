@@ -35,8 +35,8 @@ export function SiteHeader() {
           </span>
         </a>
 
-        <nav aria-label="Principal" className="hidden md:block">
-          <ul className="flex items-center gap-9 text-[13px] font-normal uppercase tracking-[0.2em] text-cream/80">
+        <nav aria-label="Principal" className="hidden lg:block">
+          <ul className="flex items-center gap-8 whitespace-nowrap text-[13px] font-normal uppercase tracking-[0.2em] text-cream/80">
             {nav.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="py-2 transition-colors duration-300 hover:text-gold">
@@ -49,7 +49,7 @@ export function SiteHeader() {
 
         <a
           href={site.phoneHref}
-          className="hidden min-h-11 items-center border border-gold/60 px-5 text-[13px] font-normal uppercase tracking-[0.2em] text-gold transition-colors duration-300 hover:bg-gold hover:text-night md:inline-flex"
+          className="hidden min-h-11 items-center border border-gold/60 px-5 text-[13px] font-normal uppercase tracking-[0.2em] text-gold transition-colors duration-300 hover:bg-gold hover:text-night lg:inline-flex"
         >
           {hero.primary}
         </a>
@@ -60,7 +60,7 @@ export function SiteHeader() {
           aria-expanded={open}
           aria-controls="menu-movel"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
-          className="flex size-11 items-center justify-center text-cream md:hidden"
+          className="flex size-11 items-center justify-center text-cream lg:hidden"
         >
           <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
             {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 9h16M4 15h16" />}
@@ -69,7 +69,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div id="menu-movel" className="border-t border-line bg-night px-6 pb-10 pt-4 md:hidden">
+        <div id="menu-movel" className="border-t border-line bg-night px-6 pb-10 pt-4 lg:hidden">
           <nav aria-label="Principal">
             <ul>
               {nav.map((l) => (
