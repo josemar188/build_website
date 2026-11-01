@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { HeroImageReveal, HeroText, MotionProvider, Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { Icon } from "@/components/Icon";
+import { AssemblyIllustration, DeliveryIllustration, OrderIllustration } from "@/components/Illustrations";
 import { QuoteForm } from "@/components/QuoteForm";
 import { SiteHeader } from "@/components/SiteHeader";
 import { about, area, faq, footer, hero, process, quickMessage, quote, services, site, whatsappLink } from "@/content";
@@ -20,6 +21,13 @@ function Label({ children, light = false }: { children: React.ReactNode; light?:
 
 const h2 = "mt-5 font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl";
 const wa = whatsappLink(quickMessage);
+
+// Ilustração de cada cartão de serviço, pela mesma ordem de services.items
+const serviceArt = [
+  { Art: DeliveryIllustration, label: "Ilustração de uma carrinha de entregas com caixas e um colchão embrulhado", bg: "" },
+  { Art: AssemblyIllustration, label: "Ilustração de uma cómoda a ser montada, com ferramentas e instruções", bg: "" },
+  { Art: OrderIllustration, label: "Ilustração de um telemóvel com a rota da entrega, uma carrinha e caixas", bg: "bg-mint" },
+];
 
 export default function Home() {
   return (
@@ -124,8 +132,9 @@ export default function Home() {
             </Reveal>
 
             <Stagger className="mt-14 grid gap-5 md:grid-cols-3">
-              {services.items.map((s) => {
+              {services.items.map((s, i) => {
                 const featured = "highlight" in s;
+                const { Art, label, bg } = serviceArt[i];
                 return (
                   <StaggerItem
                     key={s.name}
@@ -134,18 +143,17 @@ export default function Home() {
                     }`}
                   >
                     {featured && (
-                      <span className="absolute right-6 top-6 rounded-full bg-orange px-3 py-1 text-xs font-bold text-white">
+                      <span className="absolute right-6 top-6 z-10 rounded-full bg-orange px-3 py-1 text-xs font-bold text-white">
                         {s.highlight}
                       </span>
                     )}
-                    <span
-                      className={`flex size-14 items-center justify-center rounded-2xl ${
-                        featured ? "bg-white/10 text-mint" : "bg-mint text-green-dark"
-                      }`}
-                    >
-                      <Icon name={s.icon} className="size-7" />
-                    </span>
-                    <h3 className={`mt-6 font-display text-2xl font-bold ${featured ? "" : "text-forest"}`}>{s.name}</h3>
+                    <div className={`-mx-8 -mt-8 overflow-hidden rounded-t-3xl ${bg}`}>
+                      <Art label={label} className="block aspect-[3/2] w-full" />
+                    </div>
+                    <h3 className={`mt-7 flex items-center gap-3 font-display text-2xl font-bold ${featured ? "" : "text-forest"}`}>
+                      <Icon name={s.icon} className={`size-6 ${featured ? "text-mint" : "text-green"}`} />
+                      {s.name}
+                    </h3>
                     <p className={`mt-3 leading-relaxed ${featured ? "text-white/80" : "text-muted"}`}>{s.text}</p>
                     <ul className="mt-6 space-y-2.5 text-sm font-medium">
                       {s.points.map((p) => (

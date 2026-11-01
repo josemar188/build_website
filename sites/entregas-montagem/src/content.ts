@@ -6,8 +6,8 @@ export const site = {
   brand: "Entrega & Montagem",
   // EDITAR: primeiro nome de quem faz o serviço (deixa "" para esconder)
   ownerName: "",
-  // EDITAR: número de WhatsApp com indicativo, só algarismos (ex.: 351912345678)
-  whatsapp: "351900000000",
+  // Número de WhatsApp com indicativo, só algarismos
+  whatsapp: "351932689884",
   // EDITAR: formas de pagamento aceites
   payments: ["MB WAY", "Transferência", "Numerário"],
 };
